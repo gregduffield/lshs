@@ -1,0 +1,8 @@
+{
+  "name": "lshs",
+  "app_id": "a6d18153",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
