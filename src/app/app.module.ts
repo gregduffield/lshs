@@ -22,7 +22,7 @@ import { ProfileProvider } from '../providers/profile/profile';
 import { Pro } from '@ionic/pro';
 
 const IonicPro = Pro.init('a6d18153', {
-  appVersion: "1.0.0"
+  appVersion: "0.0.2"
 })
 
 @Injectable()
