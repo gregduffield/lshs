@@ -4,7 +4,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+import { WalksPage } from '../pages/walks/walks';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { TeachersPage } from '../pages/teachers/teachers';
 
 @Component({
   templateUrl: 'app.html'
@@ -12,17 +14,27 @@ import { ListPage } from '../pages/list/list';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any;
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, afAuth: AngularFireAuth) {
+
+    afAuth.authState.subscribe(user => {
+      if ( user ) { 
+        this.rootPage = HomePage;
+      } else {
+        this.rootPage = "LoginPage";
+      }
+    })
+
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'Walks', component: WalksPage },
+      { title: 'Teachers', component: TeachersPage }
     ];
 
   }

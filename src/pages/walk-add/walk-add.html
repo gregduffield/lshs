@@ -1,0 +1,51 @@
+<ion-header >
+  <ion-navbar color="primary">
+    <ion-title>Add new Learning Walk</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <form #addWalkForm="ngForm" (ngSubmit)="saveWalk()" novalidate>
+    <ion-item>
+      <ion-label stacked>Date</ion-label>
+      <ion-datetime displayFormat="DD MMM YYYY" [(ngModel)]="_walk.walkDate" placeholder="Date of Walk" name="walkDate" #walkDate="ngModel" required></ion-datetime>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="walkDate.invalid && (walkDate.dirty || walkDate.touched)">
+        <p>When was the learning walk?.</p>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Period</ion-label>
+      <ion-select [(ngModel)]="_walk.period" placeholder="Which period?" name="period" required>
+        <ion-option value="period_1">Period 1</ion-option>
+        <ion-option value="period_2">Period 2</ion-option>
+        <ion-option value="period_3">Period 3</ion-option>
+        <ion-option value="period_4">Period 4</ion-option>
+        <ion-option value="period_5">Period 5</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-list>
+        <ion-list-header>
+          Teachers visited
+        </ion-list-header>
+      <ion-item *ngFor="let teacher of _walk.observedTeachers">
+        <h2>{{teacher.firstName}} {{teacher.lastName}}</h2>
+        <button ion-button item-end (click)="removeTeacher(teacher.teacherId)">
+            <ion-icon name="remove"></ion-icon>
+        </button>
+      </ion-item>
+      </ion-list>
+      <button ion-button type="button" item-end (click)="addTeacher()" >
+          <ion-icon name="add"></ion-icon>
+        </button>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Comments</ion-label>
+      <ion-textarea [(ngModel)]="_walk.comments" name="comments" placeholder="any comments or notes?"></ion-textarea>
+    </ion-item>
+    <button ion-button type="submit" block [disabled]="!addWalkForm.form.valid">{{_walk.walkId ?  'Update Walk' : 'Add Walk' }}</button>
+    <button ion-button type="button" block *ngIf="_walk.walkId" color="danger" (click)="deleteWalk(_walk.walkId)" >Delete Walk</button>
+  </form>
+</ion-content>

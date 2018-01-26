@@ -1,0 +1,47 @@
+<ion-header color="primary">
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Walks</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <ion-fab right bottom>
+        <button ion-fab color="primary" (click)="addWalk()">
+          <ion-icon name="add"></ion-icon>
+        </button>
+      </ion-fab>
+      <ion-item *ngIf="!((walks | async)?.length > 0)"><h2>You have not added any Learning Walks</h2></ion-item>
+      <ion-list>
+          
+              <ion-grid *ngFor="let walk of walks | async">
+                <ion-row>
+                  <ion-col >
+                      <ion-label stacked>Date of Walk</ion-label>
+                      <ion-label>{{walk.walkDate | date: 'dd MMM yy'}}</ion-label>
+                  </ion-col>
+                  <ion-col >
+                      <ion-label stacked>Period</ion-label>
+                      <ion-label>{{walk.period}}</ion-label>
+                  </ion-col>
+                  <ion-col >
+                      <ion-label stacked>Teachers</ion-label>
+                      <ion-label *ngFor="let teacher of walk.observedTeachers">{{teacher.title}} {{teacher.lastName}}</ion-label>
+                  </ion-col>
+                  <ion-col align-self-end><button ion-button item-end (click)="editWalk(walk.walkId)">...</button></ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <ion-note>{{walk.comments}}</ion-note>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            
+            
+            
+          
+        </ion-list>
+</ion-content>

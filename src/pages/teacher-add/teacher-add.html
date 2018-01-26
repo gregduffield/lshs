@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Add Teacher</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <form [formGroup]="addTeacherForm" (submit)="addTeacher()" novalidate>
+    <ion-item >
+      <ion-label stacked>Title</ion-label>
+      <ion-select formControlName ="title">
+        <ion-option value="Dr">Dr</ion-option>
+        <ion-option value="Mr">Mr</ion-option>
+        <ion-option vakue="Ms">Ms</ion-option>
+        <ion-option value="Miss">Mis</ion-option>
+        <ion-option value="Mrs">Mrs</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item >
+      <ion-label stacked>First name</ion-label>
+      <ion-input type="text" formControlName="firstName"></ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!addTeacherForm.controls.firstName.valid
+    && addTeacherForm.controls.firstName.touched">
+<p>You need to enter its name.</p>
+</ion-item>
+    <ion-item >
+        <ion-label stacked>Last name</ion-label>
+        <ion-input type="text" formControlName="lastName"></ion-input>
+    </ion-item>
+    <button ion-button block type="submit" [disabled]="!addTeacherForm.valid">
+        Save
+      </button>
+  </form>
+</ion-content>

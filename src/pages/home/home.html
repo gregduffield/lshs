@@ -4,15 +4,36 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Home</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="gotoProfile()"><ion-icon name="person"></ion-icon></button>
+      </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
-
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <h3>Long Stratton High School</h3>
+  <ion-card>
+    <ion-card-header>
+      <ion-icon name="foot"></ion-icon>
+      <h2>Walks</h2>
+    </ion-card-header>
+    <ion-card-content>
+      <p>View or add Learning Walks</p>
+    </ion-card-content>
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear small (click)="addWalk()">
+          <ion-icon name="add"></ion-icon>
+          <div>Add New Walk</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small (click)="viewWalks()">
+          <ion-icon name="list"></ion-icon>
+          <div>View Walks</div>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  
 </ion-content>
