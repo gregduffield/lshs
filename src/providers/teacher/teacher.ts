@@ -23,7 +23,7 @@ export class TeacherProvider {
   }
 
   async createTeacher(teacher: Teacher): Promise<void> {
-    if (teacher.teacherId === null){
+    if (!(teacher.teacherId)){
       teacher.teacherId = this.fireStore.createId();
     }
 

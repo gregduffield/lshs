@@ -70,7 +70,7 @@ export class TeacherAddPage {
 
 
       try{
-        if (t.teacherId){
+        if (t.teacherId === null){
           await this.teacherProvider.updateTeacher(t);
         }else{
          await this.teacherProvider.createTeacher(t);

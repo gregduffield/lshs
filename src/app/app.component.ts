@@ -27,7 +27,7 @@ export class MyApp {
         this.rootPage = "LoginPage";
       }
     })
-
+    this.splashScreen.show();
     this.initializeApp();
 
     // used for an example of ngFor and navigation
