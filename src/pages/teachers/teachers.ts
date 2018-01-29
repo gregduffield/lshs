@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Loading, LoadingController, Alert, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Loading, LoadingController } from 'ionic-angular';
 import { TeacherProvider } from '../../providers/teacher/teacher';
 import { Observable } from 'rxjs/Observable';
 import { Teacher } from '../../models/teacher';
@@ -12,17 +12,19 @@ import { Teacher } from '../../models/teacher';
 })
 export class TeachersPage {
   teachers: Observable<Teacher[]>;
-  
+  loading: Loading;
+
   constructor(public navCtrl: NavController,
-              public alertCtrl: AlertController, 
               public loadingCtrl: LoadingController,
               public teacherProvider: TeacherProvider,
               ) {
-
+        this.loading = this.loadingCtrl.create();
+        this.loading.present();
   }
 
   ionViewDidLoad() {
     this.teachers = this.teacherProvider.getTeachers().valueChanges();
+    this.loading.dismiss();
   }
 
   addTeacher(): void {

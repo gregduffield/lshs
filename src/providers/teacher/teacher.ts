@@ -5,7 +5,6 @@ import {
   AngularFirestoreCollection,
   AngularFirestoreDocument
 } from 'angularfire2/firestore';
-import firebase from 'firebase';
 import { Teacher } from '../../models/teacher';
 import { Observable } from 'rxjs/Observable';
 

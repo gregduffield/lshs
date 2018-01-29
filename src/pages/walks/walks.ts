@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, Loading, LoadingController } from 'ionic-angular';
-import { Observable } from 'rxjs/Observable';
 import { WalkProvider } from '../../providers/walk/walk';
 import { Walk } from '../../models/walk';
 
@@ -9,16 +8,22 @@ import { Walk } from '../../models/walk';
   templateUrl: 'walks.html',
 })
 export class WalksPage {
-  public walks: Observable<Walk[]>;
-  
+  public walks: Walk[];
+  spinner: Loading;
+
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public loadingCtrl: LoadingController, 
               public walkProvider: WalkProvider) {
+    this.spinner = this.loadingCtrl.create();
+    this.spinner.present();
   }
 
   ionViewDidLoad() {
-    this.walks = this.walkProvider.getMyWalks().valueChanges();
+    this.walkProvider.getMyWalks().valueChanges().subscribe(walks => {
+      this.walks = walks;
+      this.spinner.dismiss();
+    })
   }
 
   addWalk(): void {

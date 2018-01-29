@@ -1,5 +1,5 @@
 <ion-header color="primary">
-  <ion-navbar>
+  <ion-navbar hideBackButton="true">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -14,10 +14,10 @@
           <ion-icon name="add"></ion-icon>
         </button>
       </ion-fab>
-      <ion-item *ngIf="!((walks | async)?.length > 0)"><h2>You have not added any Learning Walks</h2></ion-item>
+      <ion-item *ngIf="!((walks)?.length > 0)"><h2>You have not added any Learning Walks</h2></ion-item>
       <ion-list>
           
-              <ion-grid *ngFor="let walk of walks | async">
+              <ion-grid *ngFor="let walk of walks">
                 <ion-row>
                   <ion-col >
                       <ion-label stacked>Date of Walk</ion-label>

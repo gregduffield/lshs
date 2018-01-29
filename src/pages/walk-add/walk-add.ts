@@ -107,7 +107,7 @@ export class WalkAddPage {
       this._walk.observerTeacher = observer;
       await this.walksProvider.saveWalk(this._walk);
       loading.dismiss();
-      this.navCtrl.push(WalksPage);
+      this.navCtrl.pop();
     }
     catch (error) {
       loading.dismiss();
