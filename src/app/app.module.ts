@@ -20,9 +20,10 @@ import { TeacherProvider } from '../providers/teacher/teacher';
 import { TeachersPage } from '../pages/teachers/teachers';
 import { ProfileProvider } from '../providers/profile/profile';
 import { Pro } from '@ionic/pro';
+import { VERSION } from './constants';
 
 const IonicPro = Pro.init('a6d18153', {
-  appVersion: "0.0.3"
+  appVersion: VERSION
 })
 
 @Injectable()
