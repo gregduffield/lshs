@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Loading, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, Loading, LoadingController } from 'ionic-angular';
 import { TeacherProvider } from '../../providers/teacher/teacher';
 import { Observable } from 'rxjs/Observable';
 import { Teacher } from '../../models/teacher';
