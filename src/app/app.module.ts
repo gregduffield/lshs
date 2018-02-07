@@ -17,10 +17,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthProvider } from '../providers/auth/auth';
 import { WalkProvider } from '../providers/walk/walk';
 import { TeacherProvider } from '../providers/teacher/teacher';
-import { TeachersPage } from '../pages/teachers/teachers';
 import { ProfileProvider } from '../providers/profile/profile';
 import { Pro } from '@ionic/pro';
 import { VERSION } from './constants';
+import { TeachersPageModule } from '../pages/teachers/teachers.module';
 
 const IonicPro = Pro.init('a6d18153', {
   appVersion: VERSION
@@ -49,23 +49,23 @@ export class MyErrorHandler implements ErrorHandler {
     MyApp,
     HomePage,
     ListPage,
-    WalksPage,
-    TeachersPage
+    WalksPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    TeachersPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
     ListPage, 
-    WalksPage,
-    TeachersPage
+    WalksPage
+    
   ],
   providers: [
     StatusBar,
