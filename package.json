@@ -44,7 +44,7 @@
     "plugins": {
       "cordova-plugin-ionic": {
         "APP_ID": "a6d18153",
-        "CHANNEL_NAME": "Master",
+        "CHANNEL_NAME": "Test",
         "UPDATE_METHOD": "background"
       },
       "cordova-plugin-splashscreen": {}
